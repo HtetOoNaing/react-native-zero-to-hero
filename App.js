@@ -6,8 +6,9 @@
  * @flow strict-local
  */
 
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
+	FlatList,
 	RefreshControl,
 	ScrollView,
 	StyleSheet,
@@ -17,34 +18,40 @@ import {
 
 const App = () => {
 	const [items, setItems] = useState([
-		{ key: 1, name: 'Item 1' },
-		{ key: 2, name: 'Item 2' },
-		{ key: 3, name: 'Item 3' },
-		{ key: 4, name: 'Item 4' },
-		{ key: 5, name: 'Item 5' },
-		{ key: 6, name: 'Item 6' },
-		{ key: 7, name: 'Item 7' },
-		{ key: 8, name: 'Item 8' },
-		{ key: 9, name: 'Item 9' },
-		{ key: 10, name: 'Item 10' },
+		{ name: 'Item 1' },
+		{ name: 'Item 2' },
+		{ name: 'Item 3' },
+		{ name: 'Item 4' },
+		{ name: 'Item 5' },
+		{ name: 'Item 6' },
+		{ name: 'Item 7' },
+		{ name: 'Item 8' },
+		{ name: 'Item 9' },
+		{ name: 'Item 10' },
 	])
 	const [refreshing, setRefreshing] = useState(false);
 
 	const onRefresh = () => {
 		setRefreshing(true);
-		setItems([...items, {key: items.length + 1, name: `Item ${items.length + 1}`}]);
+		setItems([...items, { name: `Item ${items.length + 1}` }]);
 		setRefreshing(false);
 	}
 
 	return (
 		<View style={styles.body}>
-			<ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={['#ff00ff']} />}>
+			<FlatList keyExtractor={(item, index) => index.toString()} data={items} renderItem={({item}) => (
+				<View key={item.key} style={styles.item}>
+					<Text style={styles.text}>{item.name}</Text>
+				</View>
+			)}
+			refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={['#ff00ff']} />} />
+			{/* <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={['#ff00ff']} />}>
 				{items.map(item => (
 					<View key={item.key} style={styles.item}>
 						<Text style={styles.text}>{item.name}</Text>
 					</View>
 				))}
-			</ScrollView>
+			</ScrollView> */}
 		</View>
 	);
 };
