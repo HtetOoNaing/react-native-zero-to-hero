@@ -6,41 +6,36 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import {
+	ScrollView,
 	StyleSheet,
 	Text,
 	View,
 } from 'react-native';
 
 const App = () => {
+	const [items, setItems] = useState([
+		{ key: 1, name: 'Item 1' },
+		{ key: 2, name: 'Item 2' },
+		{ key: 3, name: 'Item 3' },
+		{ key: 4, name: 'Item 4' },
+		{ key: 5, name: 'Item 5' },
+		{ key: 6, name: 'Item 6' },
+		{ key: 7, name: 'Item 7' },
+		{ key: 8, name: 'Item 8' },
+		{ key: 9, name: 'Item 9' },
+		{ key: 10, name: 'Item 10' },
+	])
 	return (
 		<View style={styles.body}>
-			<View style={[styles.view123Container, styles.flexRow]}>
-				<View style={[styles.view1, styles.center]}>
-					<Text style={styles.text}>1</Text>
-				</View>
-				<View style={[styles.view2, styles.center]}>
-					<Text style={styles.text}>2</Text>
-				</View>
-				<View style={[styles.view3, styles.center]}>
-					<Text style={styles.text}>3</Text>
-				</View>
-			</View>
-			<View style={[styles.view4, styles.center]}>
-				<Text style={styles.text}>4</Text>
-			</View>
-			<View style={[styles.view5, styles.center]}>
-				<Text style={styles.text}>5</Text>
-			</View>
-			<View style={[styles.view67Container, styles.flexRow]}>
-				<View style={[styles.view6, styles.center]}>
-					<Text style={styles.text}>6</Text>
-				</View>
-				<View style={[styles.view7, styles.center]}>
-					<Text style={styles.text}>7</Text>
-				</View>
-			</View>
+			<ScrollView>
+				{items.map(item => (
+					<View key={item.key} style={styles.item}>
+						<Text style={styles.text}>{item.name}</Text>
+					</View>
+				))}
+			</ScrollView>
 		</View>
 	);
 };
@@ -48,56 +43,21 @@ const App = () => {
 const styles = StyleSheet.create({
 	body: {
 		flex: 1,
-		alignItems: 'stretch',
-		justifyContent: 'flex-start',
-		marginTop: 40
+		flexDirection: 'column',
+		backgroundColor: '#fff',
+		marginTop: 35
 	},
-	view123Container: {
-		height: 65,
-	},
-	view1: {
-		flex: 1,
-		backgroundColor: 'cyan',
-	},
-	view2: {
-		flex: 2,
-		backgroundColor: 'pink',
-	},
-	view3: {
-		flex: 3,
-		backgroundColor: 'yellow',
-	},
-	view4: {
-		backgroundColor: 'red',
-		height: 65,
-	},
-	view5: {
-		backgroundColor: 'green',
-		height: 65,
-	},
-	view67Container: {
-		flex: 1,
-	},
-	view6: {
-		flex: 1,
-		backgroundColor: 'white',
-	},
-	view7: {
-		flex: 1,
-		backgroundColor: 'blue',
-	},
-	center: {
+	item: {
+		backgroundColor: '#4ae1fa',
+		justifyContent: 'center',
 		alignItems: 'center',
-		justifyContent: 'center'
-	},
-	flexRow: {
-		display: 'flex',
-		flexDirection: 'row'
+		margin: 10
 	},
 	text: {
-		fontSize: 30,
-		fontWeight: '500',
-		fontStyle: 'italic'
+		color: '#000',
+		fontSize: 45,
+		fontStyle: 'italic',
+		margin: 10
 	}
 });
 
