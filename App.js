@@ -8,7 +8,8 @@
 
 import React, { useState } from 'react';
 import {
-	Alert,
+	Image,
+	ImageBackground,
 	Modal,
 	Pressable,
 	StyleSheet,
@@ -31,7 +32,7 @@ const App = () => {
 		}
 	}
 	return (
-		<View style={styles.body}>
+		<ImageBackground source={{uri: 'https://images.unsplash.com/photo-1637320116287-afb702acb49f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60'}} style={styles.body}>
 			<Modal animationType="slide" visible={showWarning} transparent={true} onRequestClose={() => setShowWarning(false)}>
 				<View style={styles.centered_view}>
 					<View style={styles.warning_modal}>
@@ -52,10 +53,16 @@ const App = () => {
 			<TouchableOpacity onPress={onPressHandler} style={styles.button}>
 				<Text style={styles.text_white}>{submitted ? "Clear" : "Submit"}</Text>
 			</TouchableOpacity>
-			{submitted && (
-				<Text style={styles.text}>You are submitted as : {name}</Text>
+			{submitted ? (
+				<View style={{justifyContent: 'center', alignItems: 'center'}}>
+					<Text style={styles.text}>You are submitted as : {name}</Text>
+					<Image source={require('./assets/volkswagen.png')} style={styles.image} />
+				</View>
+			) : (
+				<Image source={require('./assets/skoda.png')} style={styles.image} />
 			)}
-		</View>
+			<Image style={styles.image} source={{uri: 'https://images.hgmsites.net/lrg/mercedes-benz-historical-logos_100711609_l.jpg'}} />
+		</ImageBackground>
 	);
 };
 
@@ -63,7 +70,6 @@ const styles = StyleSheet.create({
 	body: {
 		flex: 1,
 		alignItems: 'center',
-		backgroundColor: '#fff',
 		marginTop: 35
 	},
 	text: {
@@ -116,6 +122,11 @@ const styles = StyleSheet.create({
 		height: 200,
 		alignItems: 'center',
 		justifyContent: 'center'
+	},
+	image: {
+		width: 100,
+		height: 100,
+		margin: 10
 	}
 });
 
