@@ -8,10 +8,10 @@
 
 import React, { useState } from 'react';
 import {
+	Alert,
 	StyleSheet,
 	Text,
 	TextInput,
-	TouchableHighlight,
 	TouchableOpacity,
 	View,
 } from 'react-native';
@@ -21,7 +21,15 @@ const App = () => {
 	const [name, setName] = useState('')
 	const [submitted, setSubmitted] = useState(false)
 	const onPressHandler = () => {
-		setSubmitted(!submitted);
+		if(name.length > 3) {
+			setSubmitted(!submitted);
+		} else {
+			Alert.alert('Warning', 'The name must be longer than 3 characters', [
+				{text: 'OK', onPress: () => console.warn('OK Pressed!'), style: 'cancel'},
+				{text: 'OK', onPress: () => console.warn('OK Pressed!'), style: 'default'},
+				{text: 'OK', onPress: () => console.warn('OK Pressed!'), style: 'destructive'},
+			])
+		}
 	}
 	return (
 		<View style={styles.body}>
@@ -29,10 +37,9 @@ const App = () => {
 				Please write your name: 
 			</Text>
 			<TextInput style={styles.input} placeholder="e.g John Doe" onChangeText={(value) => setName(value)} />
-			{/* <Button title={submitted ? "Clear" : "Submit"} color="#00f" onPress={onPressHandler} /> */}
-			<TouchableHighlight onPress={onPressHandler} style={styles.button} activeOpacity={0.5} underlayColor="#fff">
+			<TouchableOpacity onPress={onPressHandler} style={styles.button}>
 				<Text style={styles.textWhite}>{submitted ? "Clear" : "Submit"}</Text>
-			</TouchableHighlight>
+			</TouchableOpacity>
 			{submitted && (
 				<Text style={styles.text}>You are submitted as : {name}</Text>
 			)}
