@@ -11,6 +11,7 @@ import {
 	StyleSheet,
 	Text,
 	TextInput,
+	TouchableHighlight,
 	TouchableOpacity,
 	View,
 } from 'react-native';
@@ -29,9 +30,9 @@ const App = () => {
 			</Text>
 			<TextInput style={styles.input} placeholder="e.g John Doe" onChangeText={(value) => setName(value)} />
 			{/* <Button title={submitted ? "Clear" : "Submit"} color="#00f" onPress={onPressHandler} /> */}
-			<TouchableOpacity onPress={onPressHandler} style={styles.button}>
+			<TouchableHighlight onPress={onPressHandler} style={styles.button} activeOpacity={0.5} underlayColor="#fff">
 				<Text style={styles.textWhite}>{submitted ? "Clear" : "Submit"}</Text>
-			</TouchableOpacity>
+			</TouchableHighlight>
 			{submitted && (
 				<Text style={styles.text}>You are submitted as : {name}</Text>
 			)}
