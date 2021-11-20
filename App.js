@@ -8,6 +8,7 @@
 
 import React, { useState } from 'react';
 import {
+	Button,
 	FlatList,
 	RefreshControl,
 	ScrollView,
@@ -20,14 +21,20 @@ import {
 const App = () => {
 
 	const [name, setName] = useState('')
-
+	const [submitted, setSubmitted] = useState(false)
+	const onPressHandler = () => {
+		setSubmitted(!submitted);
+	}
 	return (
 		<View style={styles.body}>
 			<Text style={styles.text}>
 				Please write your name: 
 			</Text>
-			<TextInput style={styles.input} placeholder="e.g John Doe" onChangeText={(value) => setName(value)} secureTextEntry={true} />
-			<Text style={styles.text}>Your name is : {name}</Text>
+			<TextInput style={styles.input} placeholder="e.g John Doe" onChangeText={(value) => setName(value)} />
+		<Button title={submitted ? "Clear" : "Submit"} color="#00f" onPress={onPressHandler} />
+			{submitted && (
+				<Text style={styles.text}>You are submitted as : {name}</Text>
+			)}
 		</View>
 	);
 };
