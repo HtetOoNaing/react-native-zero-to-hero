@@ -8,13 +8,10 @@
 
 import React, { useState } from 'react';
 import {
-	Button,
-	FlatList,
-	RefreshControl,
-	ScrollView,
 	StyleSheet,
 	Text,
 	TextInput,
+	TouchableOpacity,
 	View,
 } from 'react-native';
 
@@ -31,7 +28,10 @@ const App = () => {
 				Please write your name: 
 			</Text>
 			<TextInput style={styles.input} placeholder="e.g John Doe" onChangeText={(value) => setName(value)} />
-		<Button title={submitted ? "Clear" : "Submit"} color="#00f" onPress={onPressHandler} />
+			{/* <Button title={submitted ? "Clear" : "Submit"} color="#00f" onPress={onPressHandler} /> */}
+			<TouchableOpacity onPress={onPressHandler} style={styles.button}>
+				<Text style={styles.textWhite}>{submitted ? "Clear" : "Submit"}</Text>
+			</TouchableOpacity>
 			{submitted && (
 				<Text style={styles.text}>You are submitted as : {name}</Text>
 			)}
@@ -57,6 +57,17 @@ const styles = StyleSheet.create({
 		borderColor: '#555',
 		borderRadius: 5,
 		padding: 10,
+	},
+	button: {
+		marginTop: 20,
+		backgroundColor: '#00ff00',
+		borderRadius: 4,
+		padding: 10
+	},
+	textWhite: {
+		color: '#fff',
+		fontWeight: 'bold',
+		fontSize: 16
 	}
 });
 
