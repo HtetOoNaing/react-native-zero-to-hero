@@ -19,6 +19,7 @@ import {
 	View,
 } from 'react-native';
 import CustomButton from './CustomButton';
+import Header from './Header';
 
 const App = () => {
 
@@ -47,6 +48,7 @@ const App = () => {
 					</View>
 				</View>
 			</Modal>
+			<Header />
 			<Text style={styles.text}>
 				Please write your name: 
 			</Text>
