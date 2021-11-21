@@ -8,6 +8,7 @@
 
 import React, { useState } from 'react';
 import {
+	Alert,
 	Image,
 	ImageBackground,
 	Modal,
@@ -15,9 +16,9 @@ import {
 	StyleSheet,
 	Text,
 	TextInput,
-	TouchableOpacity,
 	View,
 } from 'react-native';
+import CustomButton from './CustomButton';
 
 const App = () => {
 
@@ -50,9 +51,10 @@ const App = () => {
 				Please write your name: 
 			</Text>
 			<TextInput style={styles.input} placeholder="e.g John Doe" onChangeText={(value) => setName(value)} />
-			<TouchableOpacity onPress={onPressHandler} style={styles.button}>
-				<Text style={styles.text_white}>{submitted ? "Clear" : "Submit"}</Text>
-			</TouchableOpacity>
+
+			<CustomButton onPressHandler={onPressHandler} title={submitted ? "Clear" : "Submit"} style={{margin: 20}} />
+			<CustomButton onPressHandler={() => Alert.alert('TESTING', 'Hey there!', [{text: 'see ya'}])} title="Testing Button" style={{marginBottom: 30}} />
+
 			{submitted ? (
 				<View style={{justifyContent: 'center', alignItems: 'center'}}>
 					<Text style={styles.text}>You are submitted as : {name}</Text>
