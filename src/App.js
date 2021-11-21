@@ -37,7 +37,7 @@ const ScreenB = ({navigation}) => {
 const App = () => {
 	return (
 		<NavigationContainer>
-			<Stack.Navigator>
+			<Stack.Navigator screenOptions={{header: () => null}}>
 				<Stack.Screen name="Screen_A" component={ScreenA} />
 				<Stack.Screen name="Screen_B" component={ScreenB} />
 			</Stack.Navigator>
