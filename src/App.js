@@ -60,10 +60,10 @@ const App = () => {
 			{submitted ? (
 				<View style={{justifyContent: 'center', alignItems: 'center'}}>
 					<Text style={styles.text}>You are submitted as : {name}</Text>
-					<Image source={require('./assets/volkswagen.png')} style={styles.image} />
+					<Image source={require('../assets/volkswagen.png')} style={styles.image} />
 				</View>
 			) : (
-				<Image source={require('./assets/skoda.png')} style={styles.image} />
+				<Image source={require('../assets/skoda.png')} style={styles.image} />
 			)}
 			<Image style={styles.image} source={{uri: 'https://images.hgmsites.net/lrg/mercedes-benz-historical-logos_100711609_l.jpg'}} />
 		</ImageBackground>
