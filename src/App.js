@@ -10,17 +10,19 @@ const Tab = createBottomTabNavigator()
 const App = () => {
 	return (
 		<NavigationContainer>
-		<Tab.Navigator screenOptions={({route}) => ({
-			tabBarIcon: ({focused, size, color}) => {
-				let iconName;
-				if(route.name === 'Screen_A') {
-					iconName = "autoprefixer"
-				} else if (route.name === 'Screen_B') {
-					iconName = "btc"
+			<Tab.Navigator screenOptions={({ route }) => ({
+				tabBarIcon: ({ focused, size, color }) => {
+					let iconName;
+					if (route.name === 'Screen_A') {
+						iconName = "autoprefixer"
+					} else if (route.name === 'Screen_B') {
+						iconName = "btc"
+					}
+					size = focused ? 25 : 20;
+					color = focused ? '#f0f' : '#555';
+					return <FontAwesome name={iconName} size={size} color={color} />
 				}
-				return <FontAwesome name={iconName} size={focused ? 25 : 20} color={focused ? '#f0f' : '#555'} />
-			}
-		})}>
+			})}>
 				<Tab.Screen name="Screen_A" component={ScreenA} />
 				<Tab.Screen name="Screen_B" component={ScreenB} />
 			</Tab.Navigator>
