@@ -23,7 +23,8 @@ const App = () => {
 					return <FontAwesome name={iconName} size={size} color={color} />
 				},
 				tabBarActiveTintColor: '#f0f',
-				tabBarInactiveTintColor: '#555'
+				tabBarInactiveTintColor: '#555',
+				tabBarActiveBackgroundColor: '#ccc'
 			})}
 			>
 				<Tab.Screen name="Screen_A" component={ScreenA} />
