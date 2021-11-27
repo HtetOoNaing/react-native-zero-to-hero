@@ -4,10 +4,12 @@ import ScreenB from './ScreenB';
 import { NavigationContainer } from '@react-navigation/native';
 // import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FontAwesome from 'react-native-vector-icons/FontAwesome5';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+// import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 // const Tab = createBottomTabNavigator()
-const Tab = createMaterialBottomTabNavigator();
+// const Tab = createMaterialBottomTabNavigator();
+const Tab = createMaterialTopTabNavigator()
 
 const App = () => {
 	return (
@@ -33,7 +35,7 @@ const App = () => {
 			inactiveColor="#3e2465"
 			barStyle={{backgroundColor: "#694fad"}}
 			>
-				<Tab.Screen name="Screen_A" component={ScreenA} options={{ tabBarBadge: 3 }} />
+				<Tab.Screen name="Screen_A" component={ScreenA} />
 				<Tab.Screen name="Screen_B" component={ScreenB} />
 			</Tab.Navigator>
 		</NavigationContainer>
