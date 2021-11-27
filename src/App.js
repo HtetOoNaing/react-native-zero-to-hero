@@ -2,17 +2,17 @@ import React from 'react';
 import ScreenA from './ScreenA';
 import ScreenB from './ScreenB';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-const Stack = createStackNavigator()
+const Tab = createBottomTabNavigator()
 
 const App = () => {
 	return (
 		<NavigationContainer>
-			<Stack.Navigator>
-				<Stack.Screen name="Screen_A" component={ScreenA} />
-				<Stack.Screen name="Screen_B" component={ScreenB} />
-			</Stack.Navigator>
+			<Tab.Navigator>
+				<Tab.Screen name="Screen_A" component={ScreenA} />
+				<Tab.Screen name="Screen_B" component={ScreenB} />
+			</Tab.Navigator>
 		</NavigationContainer>
 	);
 };

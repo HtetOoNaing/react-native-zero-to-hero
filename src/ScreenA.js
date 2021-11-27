@@ -5,6 +5,7 @@ import {
 	View,
 } from 'react-native';
 import CustomButton from './CustomButton';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const ScreenA = ({ navigation }) => {
 	const onPressHandler = () => {
@@ -14,7 +15,12 @@ const ScreenA = ({ navigation }) => {
 		<View style={styles.body}>
 			<Text style={styles.text}>Screen A</Text>
 			<CustomButton title="Go to Screen B" onPressHandler={onPressHandler} />
-		</View>
+			<View style={styles.iconContainer}>
+            <Text>
+              <Icon name="rocket" size={30} color="#900" />
+            </Text>
+          </View>
+			</View>
 	)
 }
 

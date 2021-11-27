@@ -14,6 +14,7 @@
 		57634B85F40467B988AC86FD /* libPods-ZeroToHero-ZeroToHeroTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 62A7BE0747418A8866FC3946 /* libPods-ZeroToHero-ZeroToHeroTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		C1EF65B31570D847A2DF82CB /* libPods-ZeroToHero.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21DCE4E9B33764CCF33F3EFD /* libPods-ZeroToHero.a */; };
+		F23C6058275274AE0068C395 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = F23C6057275274AE0068C395 /* fonts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ZeroToHero/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		EECC54F8192D4F416EBBDA75 /* Pods-ZeroToHero-ZeroToHeroTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZeroToHero-ZeroToHeroTests.release.xcconfig"; path = "Target Support Files/Pods-ZeroToHero-ZeroToHeroTests/Pods-ZeroToHero-ZeroToHeroTests.release.xcconfig"; sourceTree = "<group>"; };
+		F23C6057275274AE0068C395 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +93,6 @@
 				016870931D0C1069D96F0FD1 /* Pods-ZeroToHero-ZeroToHeroTests.debug.xcconfig */,
 				EECC54F8192D4F416EBBDA75 /* Pods-ZeroToHero-ZeroToHeroTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -128,6 +129,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				F23C6057275274AE0068C395 /* fonts */,
 				13B07FAE1A68108700A75B9A /* ZeroToHero */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* ZeroToHeroTests */,
@@ -243,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F23C6058275274AE0068C395 /* fonts in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
