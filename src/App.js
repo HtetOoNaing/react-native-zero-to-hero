@@ -11,7 +11,7 @@ const Drawer = createDrawerNavigator();
 const App = () => {
 	return (
 		<NavigationContainer>
-			<Drawer.Navigator>
+			<Drawer.Navigator screenOptions={{ drawerPosition: 'right' }}>
 				<Drawer.Screen name="Screen_A" component={ScreenA} />
 				<Drawer.Screen name="Screen_B" component={ScreenB} />
 			</Drawer.Navigator>
