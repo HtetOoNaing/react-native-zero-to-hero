@@ -24,10 +24,11 @@ const App = () => {
 				},
 				tabBarActiveTintColor: '#f0f',
 				tabBarInactiveTintColor: '#555',
-				tabBarActiveBackgroundColor: '#ccc'
+				tabBarActiveBackgroundColor: '#ccc',
+				
 			})}
 			>
-				<Tab.Screen name="Screen_A" component={ScreenA} />
+				<Tab.Screen name="Screen_A" component={ScreenA} options={{ tabBarBadge: 3 }} />
 				<Tab.Screen name="Screen_B" component={ScreenB} />
 			</Tab.Navigator>
 		</NavigationContainer>
