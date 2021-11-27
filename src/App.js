@@ -26,10 +26,10 @@ const App = () => {
 					// color = focused ? '#f0f' : '#555';
 					return <FontAwesome name={iconName} size={size} color={color} />
 				},
-				// tabBarActiveTintColor: '#f0f',
+				tabBarActiveTintColor: '#f0f',
 				// tabBarInactiveTintColor: '#555',
 				// tabBarActiveBackgroundColor: '#ccc',
-				
+				tabBarShowIcon: true
 			})}
 			activeColor="#f0edf6"
 			inactiveColor="#3e2465"
