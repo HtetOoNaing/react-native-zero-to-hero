@@ -18,7 +18,7 @@ const App = () => {
 				} else if (route.name === 'Screen_B') {
 					iconName = "btc"
 				}
-				return <FontAwesome name={iconName} size={30} color="#900" />
+				return <FontAwesome name={iconName} size={focused ? 25 : 20} color={focused ? '#f0f' : '#555'} />
 			}
 		})}>
 				<Tab.Screen name="Screen_A" component={ScreenA} />
