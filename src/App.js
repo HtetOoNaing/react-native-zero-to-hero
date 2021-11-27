@@ -18,11 +18,14 @@ const App = () => {
 					} else if (route.name === 'Screen_B') {
 						iconName = "btc"
 					}
-					size = focused ? 25 : 20;
-					color = focused ? '#f0f' : '#555';
+					// size = focused ? 25 : 20;
+					// color = focused ? '#f0f' : '#555';
 					return <FontAwesome name={iconName} size={size} color={color} />
-				}
-			})}>
+				},
+				tabBarActiveTintColor: '#f0f',
+				tabBarInactiveTintColor: '#555'
+			})}
+			>
 				<Tab.Screen name="Screen_A" component={ScreenA} />
 				<Tab.Screen name="Screen_B" component={ScreenB} />
 			</Tab.Navigator>
