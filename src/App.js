@@ -2,10 +2,12 @@ import React from 'react';
 import ScreenA from './ScreenA';
 import ScreenB from './ScreenB';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FontAwesome from 'react-native-vector-icons/FontAwesome5';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
-const Tab = createBottomTabNavigator()
+// const Tab = createBottomTabNavigator()
+const Tab = createMaterialBottomTabNavigator();
 
 const App = () => {
 	return (
@@ -22,11 +24,14 @@ const App = () => {
 					// color = focused ? '#f0f' : '#555';
 					return <FontAwesome name={iconName} size={size} color={color} />
 				},
-				tabBarActiveTintColor: '#f0f',
-				tabBarInactiveTintColor: '#555',
-				tabBarActiveBackgroundColor: '#ccc',
+				// tabBarActiveTintColor: '#f0f',
+				// tabBarInactiveTintColor: '#555',
+				// tabBarActiveBackgroundColor: '#ccc',
 				
 			})}
+			activeColor="#f0edf6"
+			inactiveColor="#3e2465"
+			barStyle={{backgroundColor: "#694fad"}}
 			>
 				<Tab.Screen name="Screen_A" component={ScreenA} options={{ tabBarBadge: 3 }} />
 				<Tab.Screen name="Screen_B" component={ScreenB} />
