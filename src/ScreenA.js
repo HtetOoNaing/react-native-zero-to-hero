@@ -11,16 +11,16 @@ const ScreenA = ({ navigation }) => {
 	const onPressHandler = () => {
 		navigation.navigate('Screen_B')
 	}
+	const toggleDrawer = () => {
+		// navigation.openDrawer();
+		navigation.toggleDrawer();
+	}
 	return (
 		<View style={styles.body}>
 			<Text style={styles.text}>Screen A</Text>
 			<CustomButton title="Go to Screen B" onPressHandler={onPressHandler} />
-			<View style={styles.iconContainer}>
-            <Text>
-              <Icon name="rocket" size={30} color="#900" />
-            </Text>
-          </View>
-			</View>
+			<CustomButton title="Toggle Drawer" onPressHandler={toggleDrawer} style={styles.mt20} />
+		</View>
 	)
 }
 
@@ -33,6 +33,9 @@ const styles = StyleSheet.create({
 	text: {
 		fontSize: 40,
 		fontWeight: 'bold',
+	},
+	mt20: {
+		marginTop: 20
 	}
 });
 
