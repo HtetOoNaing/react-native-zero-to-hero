@@ -29,7 +29,8 @@ const App = () => {
 				tabBarActiveTintColor: '#f0f',
 				// tabBarInactiveTintColor: '#555',
 				// tabBarActiveBackgroundColor: '#ccc',
-				tabBarShowIcon: true
+				tabBarShowIcon: true,
+				tabBarStyle: {marginTop: 30}
 			})}
 			activeColor="#f0edf6"
 			inactiveColor="#3e2465"
