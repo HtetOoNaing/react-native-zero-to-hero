@@ -6,7 +6,10 @@ import {
 } from 'react-native';
 import CustomButton from './CustomButton';
 
-const ScreenB = ({ navigation }) => {
+const ScreenB = ({ navigation, route }) => {
+
+	const { ItemName, ItemId } = route.params
+
 	const onPressHandler = () => {
 		// navigation.navigate('Screen_A')
 		navigation.goBack();
@@ -15,6 +18,9 @@ const ScreenB = ({ navigation }) => {
 		<View style={styles.body}>
 			<Text style={styles.text}>Screen B</Text>
 			<CustomButton title="Go back to Screen A" onPressHandler={onPressHandler} />
+
+			<Text style={styles.text}>{ItemName}</Text>
+			<Text style={styles.text}>{ItemId}</Text>
 		</View>
 	)
 }

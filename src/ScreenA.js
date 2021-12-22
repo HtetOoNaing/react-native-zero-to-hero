@@ -9,7 +9,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const ScreenA = ({ navigation }) => {
 	const onPressHandler = () => {
-		navigation.navigate('Screen_B')
+		navigation.navigate('Screen_B', {ItemName: 'Item from Screen A', ItemId: 12})
 	}
 	const toggleDrawer = () => {
 		// navigation.openDrawer();
