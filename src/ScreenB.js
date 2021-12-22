@@ -14,10 +14,15 @@ const ScreenB = ({ navigation, route }) => {
 		// navigation.navigate('Screen_A')
 		navigation.goBack();
 	}
+	const onUpdateParams = () => {
+		navigation.setParams({ ItemId: 14 })
+	}
+
 	return (
 		<View style={styles.body}>
 			<Text style={styles.text}>Screen B</Text>
 			<CustomButton title="Go back to Screen A" onPressHandler={onPressHandler} />
+			<CustomButton title="Update Params" onPressHandler={onUpdateParams} style={styles.mt10} />
 
 			<Text style={styles.text}>{ItemName}</Text>
 			<Text style={styles.text}>{ItemId}</Text>
@@ -34,6 +39,9 @@ const styles = StyleSheet.create({
 	text: {
 		fontSize: 40,
 		fontWeight: 'bold',
+	},
+	mt10: {
+		marginTop: 10
 	}
 });
 
