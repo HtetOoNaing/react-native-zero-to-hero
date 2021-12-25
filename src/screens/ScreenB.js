@@ -5,6 +5,7 @@ import {
 	View,
 } from 'react-native';
 import CustomButton from '../utils/CustomButton';
+import GlobalStyle from '../utils/GlobalStyle';
 
 const ScreenB = ({ navigation, route }) => {
 
@@ -20,7 +21,7 @@ const ScreenB = ({ navigation, route }) => {
 
 	return (
 		<View style={styles.body}>
-			<Text style={styles.text}>Screen B</Text>
+			<Text style={[styles.text, GlobalStyle.CustomFont]}>Screen B</Text>
 			<CustomButton title="Go back to Screen A" onPressHandler={onPressHandler} />
 			<CustomButton title="Update Params" onPressHandler={onUpdateParams} style={styles.mt10} />
 

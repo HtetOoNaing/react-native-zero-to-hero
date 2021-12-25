@@ -5,6 +5,7 @@ import {
 	View,
 } from 'react-native';
 import CustomButton from '../utils/CustomButton';
+import GlobalStyle from '../utils/GlobalStyle';
 
 const ScreenA = ({ navigation }) => {
 	const onPressHandler = () => {
@@ -16,7 +17,7 @@ const ScreenA = ({ navigation }) => {
 	}
 	return (
 		<View style={styles.body}>
-			<Text style={styles.text}>Screen A</Text>
+			<Text style={[styles.text, GlobalStyle.CustomFont]}>Screen A</Text>
 			<CustomButton title="Go to Screen B" onPressHandler={onPressHandler} />
 			<CustomButton title="Toggle Drawer" onPressHandler={toggleDrawer} style={styles.mt20} />
 		</View>
