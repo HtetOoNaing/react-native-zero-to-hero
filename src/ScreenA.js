@@ -5,7 +5,6 @@ import {
 	View,
 } from 'react-native';
 import CustomButton from './CustomButton';
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 const ScreenA = ({ navigation }) => {
 	const onPressHandler = () => {
@@ -32,7 +31,7 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		fontSize: 40,
-		fontWeight: 'bold',
+		fontFamily: 'DancingScript-Regular'
 	},
 	mt20: {
 		marginTop: 20
