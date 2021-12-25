@@ -3,6 +3,7 @@ import {
 	Alert,
 	StyleSheet,
 	Text,
+	TextInput,
 	View,
 } from 'react-native';
 import GlobalStyle from '../utils/GlobalStyle';
@@ -55,38 +56,40 @@ const Home = ({ navigation }) => {
 		}
 	}
 
-	// const updateName = async () => {
-	// 	if (name.length === 0) {
-	// 		Alert.alert('Warning!', 'Please enter your name.')
-	// 	} else {
-	// 		try {
-	// 			await AsyncStorage.setItem('Username', name);
-	// 			Alert.alert('Success!', 'Your name has been updated.')
-	// 		} catch (error) {
-	// 			console.log(error)
-	// 		}
-	// 	}
-	// }
+	const updateName = async () => {
+		if (name.length === 0) {
+			Alert.alert('Warning!', 'Please enter your name.')
+		} else {
+			try {
+				// await AsyncStorage.setItem('Username', name);
+				await db.transaction((tx) => {
+					tx.executeSql(
+						"UPDATE Users SET Name=?",
+						[name],
+						() => { Alert.alert('Success!', 'Your name has been updated.') },
+						error => { console.log(error) }
+					)
+				})
+			} catch (error) {
+				console.log(error)
+			}
+		}
+	}
 
-	const onPressHandler = () => {
-		navigation.navigate('Screen_B')
-	}
-	const toggleDrawer = () => {
-		// navigation.openDrawer();
-		navigation.toggleDrawer();
-	}
 	return (
 		<View style={styles.body}>
 			<Text style={[styles.text, GlobalStyle.CustomFont]}>Welcome {name} !</Text>
-			<CustomButton title="Go to Screen B" onPressHandler={onPressHandler} style={styles.mt20} />
-			<CustomButton title="Toggle Drawer" onPressHandler={toggleDrawer} style={styles.mt20} />
+			<Text style={[styles.text, GlobalStyle.CustomFont]}>Your age is {age} !</Text>
+			<TextInput value={name} placeholder="Enter your name" onChangeText={(value) => setName(value)} style={[styles.input, styles.mtForm]} />
+			{/* <TextInput value={`${age}`} placeholder="Enter your age" onChangeText={(value) => setAge(value)} style={[styles.input, styles.mt20]} /> */}
+			<CustomButton title="Update" onPressHandler={updateName} style={styles.mt20} />
 		</View>
 	)
 }
 
 const styles = StyleSheet.create({
 	body: {
-		flex: 1,
+		marginTop: 40,
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
@@ -96,7 +99,21 @@ const styles = StyleSheet.create({
 	},
 	mt20: {
 		marginTop: 20
-	}
+	},
+	input: {
+		width: 300,
+		borderWidth: 1,
+		borderColor: '#555',
+		borderRadius: 10,
+		backgroundColor: '#fff',
+		textAlign: 'center',
+		fontSize: 20,
+		marginVertical: 10,
+		padding: 10,
+	},
+	mtForm: {
+		marginTop: 150
+	},
 });
 
 export default Home;
