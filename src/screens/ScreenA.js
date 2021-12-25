@@ -4,7 +4,7 @@ import {
 	Text,
 	View,
 } from 'react-native';
-import CustomButton from './CustomButton';
+import CustomButton from '../utils/CustomButton';
 
 const ScreenA = ({ navigation }) => {
 	const onPressHandler = () => {
