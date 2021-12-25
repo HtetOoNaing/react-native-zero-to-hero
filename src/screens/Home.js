@@ -1,16 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import {
+	Alert,
 	StyleSheet,
 	Text,
 	View,
 } from 'react-native';
 import GlobalStyle from '../utils/GlobalStyle';
 import CustomButton from '../utils/CustomButton';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import sqlite from 'react-native-sqlite-storage';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const db = sqlite.openDatabase({
+	name: 'MainDB',
+	location: 'default'
+},
+	() => { },
+	error => { console.log(error) }
+)
+
 
 const Home = ({ navigation }) => {
 
 	const [name, setName] = useState('')
+	const [age, setAge] = useState('')
 
 	useEffect(() => {
 		getName()
@@ -18,15 +30,43 @@ const Home = ({ navigation }) => {
 
 	const getName = () => {
 		try {
-			AsyncStorage.getItem('Username').then(name => {
-				if(name !== null) {
-					setName(name)
-				}
+			// AsyncStorage.getItem('Username').then(name => {
+			// 	if(name !== null) {
+			// 		setName(name)
+			// 	}
+			// })
+			db.transaction((tx) => {
+				tx.executeSql(
+					"SELECT Name, Age FROM Users",
+					[],
+					(tx, results) => {
+						let len = results.rows.length;
+						if(len > 0) {
+							let userName = results.rows.item(0).Name;
+							let userAge = results.rows.item(0).Age;
+							setName(userName)
+							setAge(userAge)
+						}
+					}
+				)
 			})
 		} catch (error) {
 			console.log(error)
 		}
 	}
+
+	// const updateName = async () => {
+	// 	if (name.length === 0) {
+	// 		Alert.alert('Warning!', 'Please enter your name.')
+	// 	} else {
+	// 		try {
+	// 			await AsyncStorage.setItem('Username', name);
+	// 			Alert.alert('Success!', 'Your name has been updated.')
+	// 		} catch (error) {
+	// 			console.log(error)
+	// 		}
+	// 	}
+	// }
 
 	const onPressHandler = () => {
 		navigation.navigate('Screen_B')
