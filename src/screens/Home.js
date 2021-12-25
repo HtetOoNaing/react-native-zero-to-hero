@@ -1,13 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
 	StyleSheet,
 	Text,
 	View,
 } from 'react-native';
-import CustomButton from '../utils/CustomButton';
 import GlobalStyle from '../utils/GlobalStyle';
+import CustomButton from '../utils/CustomButton';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Home = ({ navigation }) => {
+
+	const [name, setName] = useState('')
+
+	useEffect(() => {
+		getName()
+	}, [])
+
+	const getName = () => {
+		try {
+			AsyncStorage.getItem('Username').then(name => {
+				if(name !== null) {
+					setName(name)
+				}
+			})
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
 	const onPressHandler = () => {
 		navigation.navigate('Screen_B')
 	}
@@ -17,8 +37,8 @@ const Home = ({ navigation }) => {
 	}
 	return (
 		<View style={styles.body}>
-			<Text style={[styles.text, GlobalStyle.CustomFont]}>Screen A</Text>
-			<CustomButton title="Go to Screen B" onPressHandler={onPressHandler} />
+			<Text style={[styles.text, GlobalStyle.CustomFont]}>Welcome {name} !</Text>
+			<CustomButton title="Go to Screen B" onPressHandler={onPressHandler} style={styles.mt20} />
 			<CustomButton title="Toggle Drawer" onPressHandler={toggleDrawer} style={styles.mt20} />
 		</View>
 	)

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Alert, Image, StyleSheet, Text, TextInput, View } from 'react-native'
 import CustomButton from '../utils/CustomButton'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Alert, Image, StyleSheet, Text, TextInput, View } from 'react-native'
 
 const Login = ({ navigation }) => {
 	const [name, setName] = useState('');
