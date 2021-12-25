@@ -11,7 +11,8 @@ const CustomButton = ({ onPressHandler, title, style, textStyle }) => {
 
 const styles = StyleSheet.create({
 	text: {
-		color: '#000',
+		color: '#fff',
+		fontWeight: '800',
 		fontSize: 20,
 		margin: 5,
 		textAlign: 'center'

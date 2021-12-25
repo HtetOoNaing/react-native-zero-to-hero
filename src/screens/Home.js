@@ -76,6 +76,21 @@ const Home = ({ navigation }) => {
 		}
 	}
 
+	const removeUser = async () => {
+		try {
+			await db.transaction((tx) => {
+				tx.executeSql(
+					"DELETE FROM Users",
+					[],
+					() => { navigation.navigate('Login') },
+					error => { console.log(error) }
+				)
+			})
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
 	return (
 		<View style={styles.body}>
 			<Text style={[styles.text, GlobalStyle.CustomFont]}>Welcome {name} !</Text>
@@ -83,6 +98,7 @@ const Home = ({ navigation }) => {
 			<TextInput value={name} placeholder="Enter your name" onChangeText={(value) => setName(value)} style={[styles.input, styles.mtForm]} />
 			{/* <TextInput value={`${age}`} placeholder="Enter your age" onChangeText={(value) => setAge(value)} style={[styles.input, styles.mt20]} /> */}
 			<CustomButton title="Update" onPressHandler={updateName} style={styles.mt20} />
+			<CustomButton title="Delete" onPressHandler={removeUser} style={styles.removeBtn} />
 		</View>
 	)
 }
@@ -114,6 +130,10 @@ const styles = StyleSheet.create({
 	mtForm: {
 		marginTop: 150
 	},
+	removeBtn: {
+		backgroundColor: '#ff0000',
+		marginTop: 20,
+	}
 });
 
 export default Home;
