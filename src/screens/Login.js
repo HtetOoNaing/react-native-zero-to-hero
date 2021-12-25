@@ -59,7 +59,7 @@ const Login = ({ navigation }) => {
 
 	const handlePress = async () => {
 		if (name.length === 0 || age.length === 0) {
-			Alert.alert('Warning!', 'Please enter your name.')
+			Alert.alert('Warning!', 'Please enter your name and age.')
 		} else {
 			try {
 				// await AsyncStorage.setItem('Username', name);
@@ -80,7 +80,7 @@ const Login = ({ navigation }) => {
 	return (
 		<View style={styles.body}>
 			<Image style={styles.logo} source={require('../../assets/volkswagen.png')} />
-			<Text style={styles.text}>Async Storage</Text>
+			<Text style={styles.text}>SQlite DB</Text>
 			<TextInput style={[styles.input, styles.mtForm]} placeholder='Enter your name' onChangeText={(value) => setName(value)} />
 			<TextInput style={styles.input} placeholder='Enter your age' onChangeText={(value) => setAge(value)} />
 			<CustomButton title="Login" color="#1eb900" onPressHandler={handlePress} style={styles.mt10} />
