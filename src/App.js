@@ -1,20 +1,19 @@
 import React from 'react';
-import ScreenA from './screens/ScreenA';
-import ScreenB from './screens/ScreenB';
+import Home from './screens/Home';
+import Login from './screens/Login';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import { createStackNavigator } from '@react-navigation/stack';
 
-const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 
 const App = () => {
 	return (
 		<NavigationContainer>
-			<Drawer.Navigator>
-				<Drawer.Screen name="Screen_A" component={ScreenA} options={{ title: 'Screen A Title', drawerIcon: ({ focused }) => (<FontAwesome5 name="autoprefixer" size={focused ? 25 : 20} color={focused ? '#0080ff' : '#999999'} />) }} />
-				<Drawer.Screen name="Screen_B" component={ScreenB} options={{ title: 'Screen B Title', drawerIcon: ({ focused }) => (<FontAwesome5 name="btc" size={focused ? 25 : 20} color={focused ? '#0080ff' : '#999999'} />) }} initialParams={{ItemName: 'Item from Drawer', ItemId: 12}} />
-			</Drawer.Navigator>
+			<Stack.Navigator>
+				<Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+				<Stack.Screen name="Home" component={Home} />
+			</Stack.Navigator>
 		</NavigationContainer>
 	);
 };

@@ -7,7 +7,7 @@ import {
 import CustomButton from '../utils/CustomButton';
 import GlobalStyle from '../utils/GlobalStyle';
 
-const ScreenA = ({ navigation }) => {
+const Home = ({ navigation }) => {
 	const onPressHandler = () => {
 		navigation.navigate('Screen_B')
 	}
@@ -39,4 +39,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default ScreenA;
+export default Home;
