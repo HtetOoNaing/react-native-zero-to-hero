@@ -22,7 +22,7 @@ const ScreenB = ({ navigation, route }) => {
 	return (
 		<View style={styles.body}>
 			<Text style={[styles.text, GlobalStyle.CustomFont]}>Screen B</Text>
-			<CustomButton title="Go back to Screen A" onPressHandler={onPressHandler} />
+			<CustomButton title="Go back to Screen A" onPressHandler={onPressHandler} textStyle={GlobalStyle.ButtonText} />
 			<CustomButton title="Update Params" onPressHandler={onUpdateParams} style={styles.mt10} />
 
 			<Text style={styles.text}>{ItemName}</Text>
