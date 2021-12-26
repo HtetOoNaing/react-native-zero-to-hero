@@ -10,7 +10,7 @@ import GlobalStyle from '../utils/GlobalStyle';
 import CustomButton from '../utils/CustomButton';
 import sqlite from 'react-native-sqlite-storage';
 import { useDispatch, useSelector } from 'react-redux';
-import { setAge, setName } from '../redux/actions';
+import { setAge, setName, increaseAge } from '../redux/actions';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const db = sqlite.openDatabase({
@@ -105,7 +105,8 @@ const Home = ({ navigation }) => {
 			<TextInput value={name} placeholder="Enter your name" onChangeText={(value) => dispatch(setName(value))} style={[styles.input, styles.mtForm]} />
 			{/* <TextInput value={`${age}`} placeholder="Enter your age" onChangeText={(value) => setAge(value)} style={[styles.input, styles.mt20]} /> */}
 			<CustomButton title="Update" onPressHandler={updateName} style={styles.mt20} />
-			<CustomButton title="Delete" onPressHandler={removeUser} style={styles.removeBtn} />
+			<CustomButton title="Remove" onPressHandler={removeUser} style={styles.removeBtn} />
+			<CustomButton title="Increase Age" onPressHandler={() => dispatch(increaseAge())} style={styles.increaseBtn} />
 		</View>
 	)
 }
@@ -138,8 +139,12 @@ const styles = StyleSheet.create({
 		marginTop: 150
 	},
 	removeBtn: {
-		backgroundColor: '#ff0000',
+		backgroundColor: '#f40100',
 		marginTop: 20,
+	},
+	increaseBtn: {
+		backgroundColor: '#0080ff',
+		marginTop: 20
 	}
 });
 
