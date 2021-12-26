@@ -13,7 +13,7 @@ import CustomButton from '../utils/CustomButton';
 import sqlite from 'react-native-sqlite-storage';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAge, setName, increaseAge, getCities } from '../redux/actions';
-import { showNotification } from '../notification.ios';
+import { handleScheduleNotification, showNotification } from '../notification.ios';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const db = sqlite.openDatabase({
@@ -120,6 +120,7 @@ const Home = ({ navigation }) => {
 			{/* <CustomButton title="Update" onPressHandler={updateName} style={styles.mt20} />
 			<CustomButton title="Remove" onPressHandler={removeUser} style={styles.removeBtn} />
 			<CustomButton title="Increase Age" onPressHandler={() => dispatch(increaseAge())} style={styles.increaseBtn} /> */}
+			<CustomButton title="Noti 5s" onPressHandler={() => handleScheduleNotification('Notification', 'This noti will come after 5s')} style={styles.increaseBtn} /> 
 		</View>
 	)
 }
