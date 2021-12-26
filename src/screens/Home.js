@@ -26,7 +26,7 @@ const db = sqlite.openDatabase({
 const Home = ({ navigation }) => {
 
 	const dispatch = useDispatch()
-	const {name, age, cities} = useSelector(state => state.userReducer)
+	const { name, age, cities } = useSelector(state => state.userReducer)
 
 	// const [name, setName] = useState('')
 	// const [age, setAge] = useState('')
@@ -49,7 +49,7 @@ const Home = ({ navigation }) => {
 					[],
 					(tx, results) => {
 						let len = results.rows.length;
-						if(len > 0) {
+						if (len > 0) {
 							let userName = results.rows.item(0).Name;
 							let userAge = results.rows.item(0).Age;
 							// setName(userName)
@@ -104,7 +104,7 @@ const Home = ({ navigation }) => {
 		<View style={styles.body}>
 			<Text style={[styles.text, GlobalStyle.CustomFont]}>Welcome {name} !</Text>
 
-			<FlatList data={cities} renderItem={({item}) => (
+			<FlatList data={cities} renderItem={({ item }) => (
 				<View style={styles.item}>
 					<Text style={styles.title}>{item.country}</Text>
 					<Text style={styles.subtitle}>{item.city}</Text>
@@ -167,11 +167,12 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		fontSize: 30,
-		margin: 10
+		margin: 10,
+		marginTop: 20
 	},
 	subtitle: {
 		fontSize: 20,
-		margin: 10,
+		marginBottom: 20,
 		color: '#999'
 	}
 });
