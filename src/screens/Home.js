@@ -109,7 +109,9 @@ const Home = ({ navigation }) => {
 			<FlatList data={cities} renderItem={({ item }) => (
 				<TouchableOpacity onPress={() => {
 					showNotification(item.country, item.city)
-					navigation.navigate('Map')
+					navigation.navigate('Map', {
+						city: item.city
+					})
 				} }>
 					<View style={styles.item}>
 						<Text style={styles.title}>{item.country}</Text>
