@@ -5,6 +5,7 @@ import {
 	StyleSheet,
 	Text,
 	TextInput,
+	TouchableOpacity,
 	View,
 } from 'react-native';
 import GlobalStyle from '../utils/GlobalStyle';
@@ -12,6 +13,7 @@ import CustomButton from '../utils/CustomButton';
 import sqlite from 'react-native-sqlite-storage';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAge, setName, increaseAge, getCities } from '../redux/actions';
+import { showNotification } from '../notification.ios';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const db = sqlite.openDatabase({
@@ -105,10 +107,12 @@ const Home = ({ navigation }) => {
 			<Text style={[styles.text, GlobalStyle.CustomFont]}>Welcome {name} !</Text>
 
 			<FlatList data={cities} renderItem={({ item }) => (
-				<View style={styles.item}>
-					<Text style={styles.title}>{item.country}</Text>
-					<Text style={styles.subtitle}>{item.city}</Text>
-				</View>
+				<TouchableOpacity onPress={() => showNotification(item.country, item.city) }>
+					<View style={styles.item}>
+						<Text style={styles.title}>{item.country}</Text>
+						<Text style={styles.subtitle}>{item.city}</Text>
+					</View>
+				</TouchableOpacity>
 			)} keyExtractor={(item, index) => index.toString()} />
 			{/* <Text style={[styles.text, GlobalStyle.CustomFont]}>Your age is {age} !</Text>
 			<TextInput value={name} placeholder="Enter your name" onChangeText={(value) => dispatch(setName(value))} style={[styles.input, styles.mtForm]} /> */}
