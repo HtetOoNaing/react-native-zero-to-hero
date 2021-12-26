@@ -105,9 +105,9 @@ const Home = ({ navigation }) => {
 			<Text style={[styles.text, GlobalStyle.CustomFont]}>Welcome {name} !</Text>
 
 			<FlatList data={cities} renderItem={({item}) => (
-				<View>
-					<Text>{item.country}</Text>
-					<Text>{item.city}</Text>
+				<View style={styles.item}>
+					<Text style={styles.title}>{item.country}</Text>
+					<Text style={styles.subtitle}>{item.city}</Text>
 				</View>
 			)} keyExtractor={(item, index) => index.toString()} />
 			{/* <Text style={[styles.text, GlobalStyle.CustomFont]}>Your age is {age} !</Text>
@@ -154,6 +154,25 @@ const styles = StyleSheet.create({
 	increaseBtn: {
 		backgroundColor: '#0080ff',
 		marginTop: 20
+	},
+	item: {
+		backgroundColor: '#fff',
+		borderWidth: 2,
+		borderColor: '#ccc',
+		borderRadius: 5,
+		margin: 7,
+		width: 350,
+		justifyContent: 'center',
+		alignItems: 'center'
+	},
+	title: {
+		fontSize: 30,
+		margin: 10
+	},
+	subtitle: {
+		fontSize: 20,
+		margin: 10,
+		color: '#999'
 	}
 });
 
