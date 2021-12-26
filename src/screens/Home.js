@@ -107,7 +107,10 @@ const Home = ({ navigation }) => {
 			<Text style={[styles.text, GlobalStyle.CustomFont]}>Welcome {name} !</Text>
 
 			<FlatList data={cities} renderItem={({ item }) => (
-				<TouchableOpacity onPress={() => showNotification(item.country, item.city) }>
+				<TouchableOpacity onPress={() => {
+					showNotification(item.country, item.city)
+					navigation.navigate('Map')
+				} }>
 					<View style={styles.item}>
 						<Text style={styles.title}>{item.country}</Text>
 						<Text style={styles.subtitle}>{item.city}</Text>
