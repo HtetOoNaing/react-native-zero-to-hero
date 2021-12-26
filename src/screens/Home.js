@@ -9,6 +9,8 @@ import {
 import GlobalStyle from '../utils/GlobalStyle';
 import CustomButton from '../utils/CustomButton';
 import sqlite from 'react-native-sqlite-storage';
+import { useDispatch, useSelector } from 'react-redux';
+import { setAge, setName } from '../redux/actions';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const db = sqlite.openDatabase({
@@ -22,8 +24,11 @@ const db = sqlite.openDatabase({
 
 const Home = ({ navigation }) => {
 
-	const [name, setName] = useState('')
-	const [age, setAge] = useState('')
+	const dispatch = useDispatch()
+	const {name, age} = useSelector(state => state.userReducer)
+
+	// const [name, setName] = useState('')
+	// const [age, setAge] = useState('')
 
 	useEffect(() => {
 		getName()
@@ -45,8 +50,10 @@ const Home = ({ navigation }) => {
 						if(len > 0) {
 							let userName = results.rows.item(0).Name;
 							let userAge = results.rows.item(0).Age;
-							setName(userName)
-							setAge(userAge)
+							// setName(userName)
+							// setAge(userAge)
+							dispatch(setName(userName))
+							dispatch(setAge(userAge))
 						}
 					}
 				)
@@ -95,7 +102,7 @@ const Home = ({ navigation }) => {
 		<View style={styles.body}>
 			<Text style={[styles.text, GlobalStyle.CustomFont]}>Welcome {name} !</Text>
 			<Text style={[styles.text, GlobalStyle.CustomFont]}>Your age is {age} !</Text>
-			<TextInput value={name} placeholder="Enter your name" onChangeText={(value) => setName(value)} style={[styles.input, styles.mtForm]} />
+			<TextInput value={name} placeholder="Enter your name" onChangeText={(value) => dispatch(setName(value))} style={[styles.input, styles.mtForm]} />
 			{/* <TextInput value={`${age}`} placeholder="Enter your age" onChangeText={(value) => setAge(value)} style={[styles.input, styles.mt20]} /> */}
 			<CustomButton title="Update" onPressHandler={updateName} style={styles.mt20} />
 			<CustomButton title="Delete" onPressHandler={removeUser} style={styles.removeBtn} />

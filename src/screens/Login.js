@@ -3,6 +3,8 @@ import CustomButton from '../utils/CustomButton'
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 import sqlite from 'react-native-sqlite-storage';
 import { Alert, Image, StyleSheet, Text, TextInput, View } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux';
+import { setAge, setName } from '../redux/actions';
 
 const db = sqlite.openDatabase({
 	name: 'MainDB',
@@ -13,8 +15,12 @@ const db = sqlite.openDatabase({
 )
 
 const Login = ({ navigation }) => {
-	const [name, setName] = useState('');
-	const [age, setAge] = useState('');
+
+	const dispatch = useDispatch()
+	const {name, age} = useSelector(state => state.userReducer)
+
+	// const [name, setName] = useState('');
+	// const [age, setAge] = useState('');
 
 	useEffect(() => {
 		createTable()
@@ -62,6 +68,10 @@ const Login = ({ navigation }) => {
 			Alert.alert('Warning!', 'Please enter your name and age.')
 		} else {
 			try {
+
+				dispatch(setName(name))
+				dispatch(setAge(age))
+
 				// await AsyncStorage.setItem('Username', name);
 				await db.transaction(async (tx) => {
 					// await tx.executeSql(
@@ -81,8 +91,9 @@ const Login = ({ navigation }) => {
 		<View style={styles.body}>
 			<Image style={styles.logo} source={require('../../assets/volkswagen.png')} />
 			<Text style={styles.text}>SQlite DB</Text>
-			<TextInput style={[styles.input, styles.mtForm]} placeholder='Enter your name' onChangeText={(value) => setName(value)} />
-			<TextInput style={styles.input} placeholder='Enter your age' onChangeText={(value) => setAge(value)} />
+			<Text style={styles.text}>Redux</Text>
+			<TextInput style={[styles.input, styles.mtForm]} placeholder='Enter your name' onChangeText={(value) => dispatch(setName(value))} />
+			<TextInput style={styles.input} placeholder='Enter your age' onChangeText={(value) => dispatch(setAge(value))} />
 			<CustomButton title="Login" color="#1eb900" onPressHandler={handlePress} style={styles.mt10} />
 		</View>
 	)
