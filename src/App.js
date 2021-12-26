@@ -1,4 +1,5 @@
 import React from 'react';
+import Map from './screens/Map';
 import Home from './screens/Home';
 import Login from './screens/Login';
 import 'react-native-gesture-handler';
@@ -16,6 +17,7 @@ const App = () => {
 				<Stack.Navigator>
 					<Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
 					<Stack.Screen name="Home" component={Home} />
+					<Stack.Screen name="Map" component={Map} />
 				</Stack.Navigator>
 			</NavigationContainer>
 		</Provider>
