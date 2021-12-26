@@ -17,6 +17,6 @@ export const handleScheduleNotification = (title, message) => {
 	})
 }
 
-export const handleCancel = () => {
+export const handleRemoveNoti = () => {
 	PushNotificationIOS.removeAllDeliveredNotifications()
 }
