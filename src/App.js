@@ -32,7 +32,8 @@ function HomeTabs() {
 		},
 		tabBarActiveTintColor: '#0080ff',
     tabBarInactiveTintColor: '#777',
-		tabBarLabelStyle: { fontSize: 15, fontWeight: 'bold' }
+		tabBarLabelStyle: { fontSize: 15, fontWeight: 'bold' },
+		headerShown: false
 	})}
 	>
 		<Tab.Screen name="ToDo" component={ToDo} />
