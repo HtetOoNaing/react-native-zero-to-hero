@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
+import GlobalStyle from '../utils/GlobalStyle'
 
 
-const Splash = () => {
+const Splash = ({ navigation }) => {
+	useEffect(() => {
+		setTimeout(() => {
+			navigation.replace('Home')
+		}, 2000)
+	}, [])
 	return (
 		<View style={styles.body}>
 			<Image style={styles.logo} source={require('../../assets/volkswagen.png')} />
-			<Text style={styles.text}>Mash To-Do List</Text>
+			<Text style={[styles.text, GlobalStyle.CustomFont]}>Mash To-Do List</Text>
 		</View> 
 	)
 }
@@ -15,6 +21,7 @@ const styles = StyleSheet.create({
 	body: {
 		flex: 1,
 		alignItems: 'center',
+		justifyContent: 'center',
 		backgroundColor: '#0080ff'
 	},
 	logo: {
@@ -24,7 +31,7 @@ const styles = StyleSheet.create({
 		marginBottom: 20
 	},
 	text: {
-		fontSize: 25,
+		fontSize: 35,
 		color: '#fff'
 	}
 })
