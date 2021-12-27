@@ -48,6 +48,12 @@ const ToDo = ({ navigation }) => {
 		<View style={styles.body}>
 			<FlatList data={tasks.filter(task => !task.Done)} renderItem={({ item }) => (
 				<View style={styles.item_row}>
+					<View style={[
+						{
+							backgroundColor: item.Color === 'red' ? '#f28b82' : item.Color === 'blue' ? '#aecbfa' : item.Color === 'green' ? '#ccff90' : '#fff'
+						},
+						styles.color
+						]} />
 					<CheckBox value={item.Done} onValueChange={(newValue) => checkTask(item.ID, newValue)} />
 					<TouchableOpacity onPress={() => {
 						dispatch(setTaskID(item.ID))
@@ -90,7 +96,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		marginHorizontal: 10,
 		marginVertical: 7,
-		paddingHorizontal: 10,
+		paddingRight: 10,
 		backgroundColor: '#fff',
 		justifyContent: 'center',
 		borderRadius: 10,
@@ -115,6 +121,13 @@ const styles = StyleSheet.create({
 		height: 50,
 		justifyContent: 'center',
 		alignItems: 'center'
+	},
+	color: {
+		width: 20,
+		height: 100,
+		borderTopLeftRadius: 10,
+		borderBottomLeftRadius: 10,
+		marginRight: 5
 	}
 })
 
