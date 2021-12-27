@@ -1,4 +1,5 @@
 import AsyncStorageLib from '@react-native-async-storage/async-storage'
+import CheckBox from '@react-native-community/checkbox'
 import React, { useEffect } from 'react'
 import { Alert, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5'
@@ -31,21 +32,32 @@ const ToDo = ({ navigation }) => {
 		}).catch(err => console.log(err))
 	}
 
+	const checkTask = (id, newValue) => {
+		const index = tasks.findIndex(task => task.ID === id);
+		if (index > -1) {
+			let newTasks = [...tasks];
+			newTasks[index].Done = newValue
+			AsyncStorageLib.setItem('Tasks', JSON.stringify(newTasks)).then(() => {
+				dispatch(setTasks(newTasks));
+				Alert.alert('Success!', 'Task state is changed.')
+			}).catch(err => console.log(err))
+		}
+	}
+
 	return (
 		<View style={styles.body}>
 			<FlatList data={tasks} renderItem={({ item }) => (
-				<TouchableOpacity onPress={() => {
-					dispatch(setTaskID(item.ID))
-					navigation.navigate('Task')
-				}} style={styles.item}>
-					<View style={styles.item_row}>
-						<View style={styles.item_body}>
-							<Text style={[styles.title, GlobalStyle.CustomFont]} numberOfLines={1}>{item.Title}</Text>
-							<Text style={styles.subtitle} numberOfLines={1}>{item.Description}</Text>
-						</View>
-						<TouchableOpacity onPress={() => deleteTask(item.ID)} style={styles.delete}><FontAwesome5Icon name="trash" size={25} color="#ff3636" /></TouchableOpacity>
-					</View>
-				</TouchableOpacity>
+				<View style={styles.item_row}>
+					<CheckBox value={item.Done} onValueChange={(newValue) => checkTask(item.ID, newValue)} />
+					<TouchableOpacity onPress={() => {
+						dispatch(setTaskID(item.ID))
+						navigation.navigate('Task')
+					}} style={styles.item}>
+						<Text style={[styles.title, GlobalStyle.CustomFont]} numberOfLines={1}>{item.Title}</Text>
+						<Text style={styles.subtitle} numberOfLines={1}>{item.Description}</Text>
+					</TouchableOpacity>
+					<TouchableOpacity onPress={() => deleteTask(item.ID)} style={styles.delete}><FontAwesome5Icon name="trash" size={25} color="#ff3636" /></TouchableOpacity>
+				</View>
 			)} keyExtractor={(item, index) => index.toString()} />
 			<TouchableOpacity onPress={() => {
 				dispatch(setTaskID(tasks.length + 1))
@@ -75,12 +87,7 @@ const styles = StyleSheet.create({
 	},
 	item_row: {
 		flexDirection: 'row',
-		alignItems: 'center'
-	},
-	item_body: {
-		flex: 1
-	},
-	item: {
+		alignItems: 'center',
 		marginHorizontal: 10,
 		marginVertical: 7,
 		paddingHorizontal: 10,
@@ -88,6 +95,10 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		borderRadius: 10,
 		elevation: 5
+	},
+	item: {
+		flex: 1,
+		marginLeft: 10
 	},
 	title: {
 		color: '#000',
