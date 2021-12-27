@@ -6,6 +6,7 @@ import Camera from './screens/Camera';
 import Splash from './screens/Splash';
 import ToDo from './screens/ToDo';
 import Done from './screens/Done';
+import Task from './screens/Task';
 import 'react-native-gesture-handler';
 import { Store } from './redux/store';
 import { Provider } from 'react-redux';
@@ -50,6 +51,7 @@ const App = () => {
 				<RootStack.Navigator>
 					<RootStack.Screen name="Splash" component={Splash} options={{ headerShown: false }} />
 					<RootStack.Screen name="My Tasks" component={HomeTabs} />
+					<RootStack.Screen name="Task" component={Task} />
 					<RootStack.Screen name="Login" component={Login} options={{ headerShown: false }} />
 					<RootStack.Screen name="Home" component={Home} />
 				</RootStack.Navigator>
