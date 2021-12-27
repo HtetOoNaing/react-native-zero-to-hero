@@ -1,5 +1,5 @@
 import AsyncStorageLib from '@react-native-async-storage/async-storage'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Alert, StyleSheet, TextInput, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { setTasks } from '../redux/actions'
@@ -13,6 +13,18 @@ const Task = ({ navigation }) => {
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
 
+	useEffect(() => {
+		getTask()
+	}, [])
+
+	const getTask = () => {
+		const Task = tasks.find(task => task.ID === taskID);
+		if(Task) {
+			setTitle(Task.Title);
+			setDescription(Task.Description);
+		}
+	}
+
 	const handleTask = () => {
 		if (title.length === 0) {
 			Alert.alert('Warning!', 'Please write your task title')
@@ -23,7 +35,14 @@ const Task = ({ navigation }) => {
 					Title: title,
 					Description: description
 				}
-				let newTasks = [...tasks, Task]
+				const index = tasks.findIndex(task => task.ID === taskID);
+				let newTasks = [];
+				if(index > -1) {
+					newTasks = [...tasks]
+					newTasks[index] = Task
+				} else {
+					newTasks = [...tasks, Task] 
+				}
 				AsyncStorageLib.setItem('Tasks', JSON.stringify(newTasks)).then(() => {
 					dispatch(setTasks(newTasks));
 					Alert.alert('Success!', 'Task saved successfully ')

@@ -26,7 +26,10 @@ const ToDo = ({ navigation }) => {
 	return (
 		<View style={styles.body}>
 			<FlatList data={tasks} renderItem={({item}) => (
-				<TouchableOpacity style={styles.item}>
+				<TouchableOpacity onPress={() => {
+					dispatch(setTaskID(item.ID))
+					navigation.navigate('Task')
+				}} style={styles.item}>
 					<Text style={[styles.title, GlobalStyle.CustomFont]} numberOfLines={1}>{item.Title}</Text>
 					<Text style={styles.subtitle} numberOfLines={1}>{item.Description}</Text>
 				</TouchableOpacity>
