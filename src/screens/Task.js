@@ -1,9 +1,10 @@
 import AsyncStorageLib from '@react-native-async-storage/async-storage'
 import React, { useEffect, useState } from 'react'
-import { Alert, StyleSheet, TextInput, View } from 'react-native'
+import { Alert, StyleSheet, Text, TextInput, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { setTasks } from '../redux/actions'
 import CustomButton from '../utils/CustomButton'
+import CheckBox from '@react-native-community/checkbox';
 
 const Task = ({ navigation }) => {
 
@@ -12,6 +13,7 @@ const Task = ({ navigation }) => {
 
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
+	const [done, setDone] = useState(false);
 
 	useEffect(() => {
 		getTask()
@@ -22,6 +24,7 @@ const Task = ({ navigation }) => {
 		if(Task) {
 			setTitle(Task.Title);
 			setDescription(Task.Description);
+			setDone(Task.Done)
 		}
 	}
 
@@ -33,7 +36,8 @@ const Task = ({ navigation }) => {
 				let Task = {
 					ID: taskID,
 					Title: title,
-					Description: description
+					Description: description,
+					Done: done
 				}
 				const index = tasks.findIndex(task => task.ID === taskID);
 				let newTasks = [];
@@ -58,6 +62,10 @@ const Task = ({ navigation }) => {
 		<View style={styles.body}>
 			<TextInput style={styles.input} placeholder='Title' value={title} onChangeText={(value) => setTitle(value)} />
 			<TextInput style={styles.input} placeholder='Description' multiline value={description} onChangeText={(value) => setDescription(value)} />
+			<View style={styles.checkbox}>
+				<CheckBox value={done} onValueChange={(value) => setDone(value)} />
+				<Text style={styles.text}>Is Done</Text>
+			</View>
 			<CustomButton title="Save Task" style={{ width: '100%', marginTop: 10 }} onPressHandler={handleTask} />
 		</View>
 	)
@@ -71,6 +79,11 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		padding: 10
 	},
+	checkbox: {
+		flexDirection: 'row',
+		margin: 10,
+		alignItems: 'center'
+	},
 	input: {
 		width: '100%',
 		borderWidth: 1,
@@ -83,5 +96,10 @@ const styles = StyleSheet.create({
 		padding: 10,
 		height: 50,
 		lineHeight: 20
+	},
+	text: {
+		fontSize: 20,
+		color: '#000',
+		marginLeft: 10
 	}
 })
