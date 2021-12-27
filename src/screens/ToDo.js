@@ -46,7 +46,7 @@ const ToDo = ({ navigation }) => {
 
 	return (
 		<View style={styles.body}>
-			<FlatList data={tasks} renderItem={({ item }) => (
+			<FlatList data={tasks.filter(task => !task.Done)} renderItem={({ item }) => (
 				<View style={styles.item_row}>
 					<CheckBox value={item.Done} onValueChange={(newValue) => checkTask(item.ID, newValue)} />
 					<TouchableOpacity onPress={() => {
