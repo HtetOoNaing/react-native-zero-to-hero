@@ -1,5 +1,5 @@
 #import "AppDelegate.h"
-
+#import <GoogleMaps/GoogleMaps.h>
 #import <UserNotifications/UserNotifications.h>
 #import <RNCPushNotificationIOS.h>
 
@@ -30,6 +30,9 @@ static void InitializeFlipper(UIApplication *application) {
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+
+	[GMSServices provideAPIKey:@"AIzaSyCHsNPyUQ-zVJJCzT3_gIetfcIqp8Auh1M"];
+	
 #ifdef FB_SONARKIT_ENABLED
   InitializeFlipper(application);
 #endif

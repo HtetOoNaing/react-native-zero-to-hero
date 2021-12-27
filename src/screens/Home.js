@@ -110,7 +110,9 @@ const Home = ({ navigation }) => {
 				<TouchableOpacity onPress={() => {
 					showNotification(item.country, item.city)
 					navigation.navigate('Map', {
-						city: item.city
+						city: item.city,
+						lat: item.lat,
+						lng: item.lng
 					})
 				} }>
 					<View style={styles.item}>

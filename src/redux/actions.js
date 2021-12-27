@@ -3,7 +3,7 @@ export const SET_USER_AGE = 'SET_USER_AGE'
 export const INCREASE_AGE = 'INCREASE_AGE'
 export const GET_CITIES = 'GET_CITIES'
 
-const API_URL = "https://mocki.io/v1/0a221f18-70bc-41d0-8b30-2a1675110890";
+const API_URL = "https://mocki.io/v1/531bdef2-a582-44cb-add4-865d0b1e77ea";
 
 export const getCities = () => {
 	try {
