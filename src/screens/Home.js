@@ -105,7 +105,7 @@ const Home = ({ navigation }) => {
 	return (
 		<View style={styles.body}>
 			<Text style={[styles.text, GlobalStyle.CustomFont]}>Welcome {name} !</Text>
-
+			<CustomButton title="Open Camera" onPressHandler={() => navigation.navigate('Camera')} />
 			<FlatList data={cities} renderItem={({ item }) => (
 				<TouchableOpacity onPress={() => {
 					showNotification(item.country, item.city)
